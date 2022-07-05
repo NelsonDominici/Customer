@@ -43,12 +43,14 @@
               </tbody>
             </table>
           </div>
+          <!--
           <v-btn text color="primary" router-link to="/register" block @click="logout">logout
             <template v-slot:append>
             <div class="pa-2">            
             </div>
           </template>
           </v-btn>
+          -->
     </div>
 </template>
 
@@ -74,11 +76,12 @@ export default {
       window.location.reload();
       });
     },
-
+/*
     logout() {
       localStorage.removeItem("token");
       this.$router.push("/register");
     },
+    */
   }
 };
 

@@ -10,23 +10,24 @@
           <form id="create-post-form" @submit.prevent="editCustomer">
                <div class="form-group col-md-12">
                 <label for="title"> First Name </label>
-                <input type="text" id="first_name" v-model="customer.first_name" name="title" class="form-control" placeholder="Enter firstname">
+                <input type="text" id="first_name" v-model="customer.first_name" name="first_name" class="form-control" placeholder="Enter firstname">
                </div>
                <div class="form-group col-md-12">
                 <label for="title"> Last Name </label>
-                <input type="text" id="last_name" v-model="customer.last_name" name="title" class="form-control" placeholder="Enter Last name">
+                <input type="text" id="last_name" v-model="customer.last_name" name="last_name" class="form-control" placeholder="Enter Last name">
                </div>
              <div class="form-group col-md-12">
                 <label for="title"> Email </label>
-                <input type="text" id="email" v-model="customer.email" name="title" class="form-control" placeholder="Enter email">
+                <input type="text" id="email" v-model="customer.email" name="email" class="form-control" placeholder="Enter email">
             </div>
             <div class="form-group col-md-12">
                 <label for="title"> Phone </label>
-                <input type="text" id="phone_number" v-model="customer.phone" name="title" class="form-control" placeholder="Enter Phone number">
+                <input type="text" id="phone_number" v-model="customer.phone" name="phone" class="form-control" placeholder="Enter Phone number">
             </div>
             <div class="form-group col-md-12">
                 <label for="title"> Address </label>
-                <input type="text" id="address" v-model="customer.address" name="title" class="form-control" placeholder="Enter Address">
+                <input type="text" id="address" v-model="customer.address" name="address" class="form-control" placeholder="Enter Address">
+                
             </div>
               <div class="form-group col-md-12">
                   <label for="description"> Description </label>
@@ -46,9 +47,8 @@ import router from "../../router";
 export default {
     data(){
         return{
-            customer:[
-                
-            ],
+            id:0,
+            customer:{},
         };
     },
 
@@ -58,6 +58,11 @@ export default {
     },
 
     methods: {
+        getCustomer(){
+            axios.get('http://localhost:3000/customer/customer/' + this.id).then(data => (this.customer = data.data));
+            console.log();
+        },
+        
         editCustomer(){
             let customerData = {
                 first_name: this.customer.first_name,
@@ -71,11 +76,6 @@ export default {
                 router.push({name: "home"});
                 console.log(data)
             });
-        },
-
-        getCustomer(){
-            axios.get('http://localhost:3000/customer/customers/?{this.id}', this.customerID).then(data => (this.customerID = data.data));
-            console.log();
         },
 
         navigate(){
