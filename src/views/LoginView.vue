@@ -44,7 +44,7 @@ export default{
             });
             console.log(result.data);
             localStorage.token = result.data;
-            this.$router.push({name: '/home'});
+            this.$router.push({path: '/home'});
         },
     },
 };
