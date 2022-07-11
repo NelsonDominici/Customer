@@ -10,7 +10,7 @@
                         </v-card-text>
                         
                         <v-card-actions>
-                            <v-btn 
+                            <v-btn class="enter"
                             color="success"
                             @click="login"
                             >Enter
@@ -18,8 +18,8 @@
                         </v-card-actions>
                     </v-card>
                         <div class="text-center">
-                            <v-btn text color="primary" router-link to="/register">Not registered yet?</v-btn>
-                            <v-btn text color="primary" router-link to="/">Go back home</v-btn>
+                            <v-btn class="notregisteryetlogin" text color="primary" router-link to="/register" >Not registered yet?</v-btn>
+                            <v-btn class="gobackhomelogin" text color="primary" router-link to="/">Go back home</v-btn>
                         </div> 
             </v-col>
         </v-row>
@@ -29,7 +29,7 @@
 <script>
 import axios from 'axios';
 export default{
- data(){
+    data(){
         return{
                 email: "",
                 password: "",
@@ -38,6 +38,7 @@ export default{
             
     methods: {
         async login(){
+            
             const result = await axios.post("http://localhost:3000/users/login",{
                 email: this.email,
                 password: this.password,
@@ -48,37 +49,25 @@ export default{
         },
     },
 };
-/*
-export default {
-    data(){
-        return{
-            email: '',
-            password: '',
-        };
-    },
 
-    methods: {
-        async SubmitForm(){
-            try{
-                let result = await axios.post('http://localhost:3000/users/login',{
-                   email: this.email,
-                   password: this.password,
-                });
-                if (!result.data.error){
-                    localStorage.setItem("token", result.data.token);
-                    this.$router.push('/home');
-                }
-            }
-            catch (error){
-                console.error(error);
-            }
-        },
-    },
-};
-
-*/
 </script>
 
 <style>
+
+.enter{
+    left: 2%;
+}
+
+.notregisteryetlogin{
+    left: 125%;
+    top: 260px;
+    position: relative;
+}
+
+.gobackhomelogin{
+    left: 125%;
+    top: 260px;
+    position: relative;
+}
 
 </style>

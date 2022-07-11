@@ -1,8 +1,9 @@
-# customer
+# vue frontend customer project
 
 ## Project setup
 ```
-npm install
+First you you clone the project
+then you write in a terminal this code: git clone (name of the project repository)
 ```
 
 ### Compiles and hot-reloads for development
